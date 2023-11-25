@@ -2,13 +2,13 @@ class Repeller {
   constructor(x, y) {
     this.position = createVector(x, y);
     this.power = 200;
-    this.value = 0.5;
+    this.value = 0.8;
   }
   
   move() {
     this.position.y -= this.value;
 
-    if(this.position.y > height || this.position.y < 0){
+    if(this.position.y > 205 || this.position.y < 195){
       this.value *= -1;
     }
   }
@@ -16,9 +16,9 @@ class Repeller {
 
   show() {
     stroke(0);
-    strokeWeight(2);
-    fill(127);
-    circle(this.position.x, this.position.y, 32);
+    noStroke();
+    fill(230);
+    circle(this.position.x, this.position.y, 50);
   }
 
   repel(particle) {
