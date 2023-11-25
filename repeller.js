@@ -8,7 +8,7 @@ class Repeller {
   move() {
     this.position.y -= this.value;
 
-    if(this.position.y > 205 || this.position.y < 195){
+    if(this.position.y > 300 || this.position.y < 100){
       this.value *= -1;
     }
   }
@@ -18,13 +18,13 @@ class Repeller {
     stroke(0);
     noStroke();
     fill(230);
-    circle(this.position.x, this.position.y, 50);
+    circle(this.position.x, this.position.y, 30);
   }
 
   repel(particle) {
     let force = p5.Vector.sub(this.position, particle.position);
     let distance = force.mag();
-    distance = constrain(distance, 5, 50);
+    distance = constrain(distance, 1, 15);
     let strength = (-1 * this.power) / (distance * distance);
     force.setMag(strength);
     return force;
