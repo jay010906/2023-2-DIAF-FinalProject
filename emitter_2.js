@@ -1,6 +1,5 @@
 class Emitter_2 {
-
-  constructor(x, y) {
+constructor(x, y) {
     this.origin = createVector(x, y);
     this.particles = [];
   }
@@ -22,9 +21,23 @@ class Emitter_2 {
     }
   }
   
+  applyRepeller(repeller_2) {
+    for (let particle of this.particles) {
+      let force = repeller_2.repel(particle);
+      particle.applyForce(force);
+    }
+  }
+
   applyAttractor(attractor) {
     for (let particle of this.particles) {
       let force = attractor.pull(particle);
+      particle.applyForce(force);
+    }
+  }
+
+  applyAttractor(attractor_2) {
+    for (let particle of this.particles) {
+      let force = attractor_2.pull(particle);
       particle.applyForce(force);
     }
   }
