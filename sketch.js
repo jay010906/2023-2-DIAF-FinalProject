@@ -26,12 +26,16 @@ gravity_y = constrain(gravity_y, 0, 30);
   
   emitter.addParticle();
   emitter_2.addParticle();
+  emitter.addParticle();
+  emitter_2.addParticle();
+  emitter.addParticle();
+  emitter_2.addParticle();
 
   let gravity = createVector(gravity_x, gravity_y);
 
   emitter.applyForce(gravity);
   emitter.applyRepeller(repeller);
-emitter.applyAttractor(attractor);
+  emitter.applyAttractor(attractor);
   emitter.run();
 
   emitter_2.applyForce(gravity);

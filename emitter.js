@@ -3,6 +3,8 @@ class Emitter {
   constructor(x, y) {
     this.origin = createVector(x, y);
     this.particles = [];
+    this.velocity = createVector();
+    this.acceleration = createVector();
   }
 
   addParticle() {
@@ -12,6 +14,7 @@ class Emitter {
   applyForce(force) {
     for (let particle of this.particles) {
       particle.applyForce(force);
+  this.acceleration.add(force);
     }
   }
 

@@ -1,9 +1,14 @@
 class Particle {
   constructor(x, y) {
+    this.mouseXValue = map(mouseX, 0, width, -1, 5);
+    this.mouseYValue = map(mouseY, 0, height, -1, 5);
+    this.frame = frameCount;
     this.position = createVector(x, y);
-    this.velocity = createVector(random(-1, 3), random(-1, 5));
-    this.acceleration = createVector(0, 0);
+    this.velocity = createVector(this.mouseXValue, this.mouseYValue);
+    this.acceleration = createVector(this.mouseXValue, this.mouseYValue);
     this.lifespan = 255.0;
+
+    console.log(this.acceleration);
   }
 
   run() {
@@ -19,7 +24,7 @@ class Particle {
     this.velocity.add(this.acceleration);
     this.position.add(this.velocity);
     this.lifespan -= 2;
-    this.acceleration.mult(0);
+    this.acceleration.mult(0.05);
   }
 
   show() {
