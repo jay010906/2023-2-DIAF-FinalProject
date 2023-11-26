@@ -3,6 +3,9 @@ let emitter;
 let emitter_2;
 let repeller;
 let attractor;
+let gravity_x = 0;
+let gravity_y = 0;
+
 
 function setup() {
   createCanvas(400, 400);
@@ -13,6 +16,10 @@ function setup() {
 }
 
 function draw() {
+
+gravity_x = constrain(gravity_x, 0, 30);
+gravity_y = constrain(gravity_y, 0, 30);
+
   background(255);
   repeller.move();
   attractor.move();
@@ -20,7 +27,7 @@ function draw() {
   emitter.addParticle();
   emitter_2.addParticle();
 
-  let gravity = createVector(0, 0.1);
+  let gravity = createVector(gravity_x, gravity_y);
 
   emitter.applyForce(gravity);
   emitter.applyRepeller(repeller);
@@ -34,4 +41,21 @@ emitter.applyAttractor(attractor);
 
   repeller.show();
   attractor.show();
+
+  if (keyIsDown(LEFT_ARROW)) {
+    gravity_x -= 0.01;
+  }
+  if (keyIsDown(RIGHT_ARROW)) {
+    gravity_x += 0.01;
+  }
+
+  if (keyIsDown(UP_ARROW)) {
+    gravity_y -= 0.01;
+  }
+
+  if (keyIsDown(DOWN_ARROW)) {
+    gravity_y += 0.01;
+  }
+  console.log(gravity_y);
+  console.log(gravity_x);
 }
