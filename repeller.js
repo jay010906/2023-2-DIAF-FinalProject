@@ -8,7 +8,7 @@ class Repeller {
   move() {
     this.position.y -= this.value;
 
-    if(this.position.y > 300 || this.position.y < 100){
+    if(this.position.y > height || this.position.y < 0){
       this.value *= -1;
     }
   }

@@ -2,10 +2,15 @@ class Attractor {
   constructor(x, y) {
     this.position = createVector(x, y);
     this.power = 100;
+    this.value = 0.8;
   }
   
-  move(value) {
-    this.position.y -= value;
+  move() {
+    // this.position.x -= this.value;
+
+  // if(this.position.x > width || this.position.x < 0){
+  //   this.value *= -1;
+  //  }
   }
   
   setPower(value) {
