@@ -1,4 +1,5 @@
 
+let gravity_xSlider, gravity_ySlider;
 let emitter;
 let emitter_2;
 let repeller;
@@ -17,12 +18,17 @@ function setup() {
   repeller_2 = new Repeller_2(width / 2, 300);
   attractor = new Attractor(100, height / 2);
   attractor_2 = new Attractor(300, height / 2);
+
+  gravity_xSlider = createSlider(-3, 3, 0);
+  gravity_xSlider.position(20, 20);
+  gravity_ySlider = createSlider(-3, 3, 0);
+  gravity_ySlider.position(20, 50);
 }
 
 function draw() {
 
-gravity_x = constrain(gravity_x, -5, 5);
-gravity_y = constrain(gravity_y, -5, 5);
+gravity_x =  gravity_xSlider.value();
+gravity_y = gravity_ySlider.value();
 
   background(255);
   
