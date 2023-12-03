@@ -4,6 +4,14 @@ class Repeller {
    this.power = 300;
   }
 
+  move(value) {
+    this.position.y -= value;
+  }
+  
+  setPower(value) {
+    this.power = value;
+  }
+
   show() {
     stroke(0);
     noStroke();

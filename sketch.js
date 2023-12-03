@@ -1,79 +1,70 @@
+// GUI
+let pSlider, nSlider;
 
-let gravity_xSlider, gravity_ySlider;
+let tValue = 10;
+let tValueMin = 0;
+let tValueMax = 100;
+let tValueStep = 2;
+let gui;
+
+let params = {
+  testValue : 10,
+  testValueMin : 0,
+  testValueMax : 500,
+  testValueStep : 2,
+  move : 1,
+  moveMin : 0,
+  moveMax : 10,
+  moveStep : 0.1,
+  tColor : [200, 0, 0],
+  tChoice : ['apple', 'banana', 'mango']
+}
+
+// One ParticleSystem
 let emitter;
-let emitter_2;
-let repeller;
-let repeller_2;
-let attractor;
-let attractor_2;
-let gravity_x = 0;
-let gravity_y = 0;
 
+//{!1} One repeller
+let repeller;
+let att;
 
 function setup() {
-  createCanvas(400, 400);
-  emitter = new Emitter(width / 2, height / 2);
-  emitter_2 = new Emitter_2(width/2, height / 2);
-  repeller = new Repeller(width / 2, 100);
-  repeller_2 = new Repeller_2(width / 2, 300);
-  attractor = new Attractor(100, height / 2);
-  attractor_2 = new Attractor(300, height / 2);
-
-  gravity_xSlider = createSlider(-3, 3, 0);
-  gravity_xSlider.position(20, 20);
-  gravity_ySlider = createSlider(-3, 3, 0);
-  gravity_ySlider.position(20, 50);
+  createCanvas(300, 300);
+  emitter = new Emitter(width / 2, height/2);
+  repeller = new Repeller(width / 2, 350);
+  att = new Attractor(20, height/2);
+  
+  pSlider = createSlider(0, 500, 100);
+  pSlider.position(10, 320);
+  nSlider = createSlider(0, 100, 0);
+  nSlider.position(10, 340);
+  
+  gui = createGui('test slider');
+  // sliderRange(0, 100, 2);
+  // gui.addGlobals('tValue');
+  
+  gui.addObject(params);
+  gui.setPosition(310, 10);
 }
 
 function draw() {
-
-gravity_x =  gravity_xSlider.value();
-gravity_y = gravity_ySlider.value();
-
   background(255);
+    
+  repeller.setPower(params.testValue);
+  repeller.move(params.move);
   
-  emitter.addParticle();
-  emitter_2.addParticle();
-  emitter.addParticle();
-  emitter_2.addParticle();
-  emitter.addParticle();
-  emitter_2.addParticle();
-
-  let gravity = createVector(gravity_x, gravity_y);
-
+  for (let i=0; i<nSlider.value(); i++) {
+    emitter.addParticle(params.tColor);  
+  }
+  
+  
+  // We’re applying a universal gravity.
+  let gravity = createVector(0, 0.1);
   emitter.applyForce(gravity);
+  //{!1} Applying the repeller
   emitter.applyRepeller(repeller);
-emitter.applyAttractor(attractor);
-emitter.applyRepeller(repeller_2);
-emitter.applyAttractor(attractor_2);
+  emitter.applyAttractor(att);
   emitter.run();
 
-  emitter_2.applyForce(gravity);
-  emitter_2.applyRepeller(repeller);
-  emitter_2.applyAttractor(attractor);
-  emitter_2.applyRepeller(repeller_2);
-  emitter_2.applyAttractor(attractor_2);
-  emitter_2.run();
-
   repeller.show();
-  repeller_2.show();
-  attractor.show();
-  attractor_2.show();
-
-  if (keyIsDown(LEFT_ARROW)) {
-    gravity_x -= 0.01;
-  }
-  if (keyIsDown(RIGHT_ARROW)) {
-    gravity_x += 0.01;
-  }
-
-  if (keyIsDown(UP_ARROW)) {
-    gravity_y -= 0.01;
-  }
-
-  if (keyIsDown(DOWN_ARROW)) {
-    gravity_y += 0.01;
-  }
-  console.log(gravity_y);
-  console.log(gravity_x);
+  att.show();
 }

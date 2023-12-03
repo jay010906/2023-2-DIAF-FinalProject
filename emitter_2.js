@@ -4,8 +4,10 @@ constructor(x, y) {
     this.particles = [];
   }
 
-  addParticle() {
-    this.particles.push(new Particle(this.origin.x, this.origin.y));
+  addParticle(aColor) {
+    let p = new Particle(this.origin.x, this.origin.y);
+    p.c = color(aColor);
+    this.particles.push(p);
   }
 
   applyForce(force) {
