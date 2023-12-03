@@ -5,11 +5,11 @@ class Attractor {
   }
   
   move(value) {
-    this.position.y -= value;
+    this.position.x -= value;
   }
   
   setPower(value) {
-    this.power = map(value, 0, width, -300, 300);
+    this.power = value;
   }
 
   show() {

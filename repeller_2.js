@@ -2,10 +2,12 @@ class Repeller_2 {
     constructor(x, y) {
       this.position = createVector(x, y);
       this.power = 300;
+      this.value = 0.5;
     }
   
     move(value) {
       this.position.y -= value;
+  
     }
     
     setPower(value) {

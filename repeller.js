@@ -5,7 +5,7 @@ class Repeller {
   }
 
   move(value) {
-    this.position.y -= value;
+    this.position.y += value;
   }
   
   setPower(value) {
