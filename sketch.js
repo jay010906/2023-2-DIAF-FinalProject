@@ -12,23 +12,33 @@ let params = {
   powerValueMax : 500,
   powerValueStep : 1,
 
-  repellerMove : 0,
-  repellerMoveMin : 0,
-  repellerMoveMax : 1,
-  repellerMoveStep : 0.1,
+  repeller1Move : 0,
+  repeller1MoveMin : -1,
+  repeller1MoveMax : 1,
+  repeller1MoveStep : 0.05,
 
-  attractorMove : 0,
-  attractorMoveMin : 0,
-  attractorMoveMax : 1,
-  attractorMoveStep : 0.1,
+  repeller2Move : 0,
+  repeller2MoveMin : -1,
+  repeller2MoveMax : 1,
+  repeller2MoveStep : 0.05,
+
+  attractor1Move : 0,
+  attractor1MoveMin : -1,
+  attractor1MoveMax : 1,
+  attractor1MoveStep : 0.05,
+
+  attractor2Move : 0,
+  attractor2MoveMin : -1,
+  attractor2MoveMax : 1,
+  attractor2MoveStep : 0.05,
 
   gravityxValue : 0,
-  gravityxMin : 1,
+  gravityxMin : 0,
   gravityxMax : 1,
   gravityxStep : 0.1,
 
   gravityyValue : 0,
-  gravityyMin : 1,
+  gravityyMin : 0,
   gravityyMax : 1,
   gravityyStep : 0.1,
 
@@ -63,14 +73,17 @@ function setup() {
 function draw() {
   background(255);
     
-  repeller.setPower(params.testValue);
-  repeller.move(params.repellerMove);
-  repeller_2.setPower(params.testValue);
-  repeller_2.move(params.repellerMove);
-  attractor.setPower(params.testValue);
-  attractor.move(params.attractorMove);
-  attractor_2.setPower(params.testValue);
-  attractor_2.move(params.attractorMove);
+  repeller.setPower(params.powerValue);
+  repeller.move(params.repeller1Move);
+
+  repeller_2.setPower(params.powerValue);
+  repeller_2.move(params.repeller2Move);
+
+  attractor.setPower(params.powerValue);
+  attractor.move(params.attractor1Move);
+
+  attractor_2.setPower(params.powerValue);
+  attractor_2.move(params.attractor2Move);
   
   for (let i=0; i<nSlider.value(); i++) {
     emitter.addParticle(params.particleColor);  

@@ -4,8 +4,8 @@ class Attractor {
     this.power = 300;
   }
   
-  move(value) {
-    this.position.x -= value;
+move(value) {
+    this.position.x += value;
   }
   
   setPower(value) {

@@ -3,7 +3,7 @@
     var guis = [];
   
     var sliderMin = 0;
-    var sliderMax = 3;
+    var sliderMax = 100;
     var sliderStep = 0.1;
   
     var guiProvider = 'QuickSettings';

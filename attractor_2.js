@@ -2,11 +2,12 @@ class Attractor_2 {
     constructor(x, y) {
       this.position = createVector(x, y);
       this.power = 300;
+      // this.value = 0.05;
       
     }
 
-    move(value) {
-      this.position.x += value;
+    move(alue) {
+      this.position.x -= value;
     }
     
     setPower(value) {
