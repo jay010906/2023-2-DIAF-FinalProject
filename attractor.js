@@ -22,7 +22,7 @@ move(value) {
   pull(particle) {
     let force = p5.Vector.sub(this.position, particle.position);
     let distance = force.mag();
-    distance = constrain(distance, 1, 10);
+    distance = constrain(distance, params.distanceX_Value, params.distanceY_Value);
     let strength = this.power / (distance * distance);
     force.setMag(strength);
     return force;

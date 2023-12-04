@@ -12,6 +12,10 @@ class Repeller {
     this.power = value;
   }
 
+  setDistance(value) {
+    this.distance = value;
+  }
+
   show() {
     stroke(0);
     noStroke();
