@@ -12,9 +12,6 @@ class Repeller {
     this.power = value;
   }
 
-  setDistance(value) {
-    this.distance = value;
-  }
 
   show() {
     stroke(0);
@@ -26,7 +23,7 @@ class Repeller {
   repel(particle) {
     let force = p5.Vector.sub(this.position, particle.position);
     let distance = force.mag();
-    distance = constrain(distance, 1, 50);
+    distance = constrain(distance, params.distanceX_Value, params.distanceY_Value);
     let strength = (-1 * this.power) / (distance * distance);
     force.setMag(strength);
     return force;
