@@ -4,7 +4,11 @@ class Repeller {
    this.power = 300;
   }
 
-  move(value) {
+  moveX(value) {
+    this.position.x += value;
+  }
+
+  moveY(value) {
     this.position.y += value;
   }
   
@@ -12,18 +16,16 @@ class Repeller {
     this.power = value;
   }
 
-
   show() {
-    stroke(0);
     noStroke();
-    fill(230);
+    fill(0, basic.alphaValue);
     circle(this.position.x, this.position.y, 30);
   }
 
   repel(particle) {
     let force = p5.Vector.sub(this.position, particle.position);
     let distance = force.mag();
-    distance = constrain(distance, params.distanceX_Value, params.distanceY_Value);
+    distance = (shape.repellerDistanceX, shape.repellerDistanceY);
     let strength = (-1 * this.power) / (distance * distance);
     force.setMag(strength);
     return force;

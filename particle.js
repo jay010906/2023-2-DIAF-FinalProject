@@ -4,8 +4,6 @@ class Particle {
     this.velocity = createVector(random(-1, 3), random(-1, 3));
     this.acceleration = createVector(0, 8);
     this.lifespan = 255.0;
-
-    console.log(this.acceleration);
   }
 
   run() {
