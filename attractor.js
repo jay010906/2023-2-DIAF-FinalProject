@@ -19,7 +19,7 @@ class Attractor {
   show() {
     noStroke();
     fill(0, basic.alphaValue);
-    circle(this.position.x, this.position.y, 30);
+    circle(this.position.x, this.position.y, basic.attractor1Diameter);
   }
 
   pull(particle) {

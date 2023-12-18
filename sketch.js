@@ -13,6 +13,26 @@ let basic = {
   alphaValueMax : 255,
   alphaValueStep : 1,
 
+  repeller1Diameter: 0,
+  repeller1DiameterMin : 0,
+  repeller1DiameterMax : 200,
+  repeller1DiameterStep : 1,
+
+  repeller2Diameter: 0,
+  repeller2DiameterMin : 0,
+  repeller2DiameterMax : 200,
+  repeller2DiameterStep : 1,
+
+  attractor1Diameter : 0,
+  attractor1DiameterMin : 0,
+  attractor1DiameterMax : 200,
+  attractor1DiameterStep : 1,
+
+  attractor2Diameter : 0,
+  attractor2DiameterMin : 0,
+  attractor2DiameterMax : 200,
+  attractor2DiameterStep : 1,
+
   repeller1MoveX: 0,
   repeller1MoveXMin : -1,
   repeller1MoveXMax : 1,
@@ -91,6 +111,7 @@ let shape = {
   attractorDistanceYMin : 0,
   attractorDistanceYMax : 50,
   attractorDistanceYStep : 0.01,
+  
 }
 
 let emitter;

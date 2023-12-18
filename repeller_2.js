@@ -19,7 +19,7 @@ class Repeller_2 {
     show() {
       noStroke();
       fill(0, basic.alphaValue);
-      circle(this.position.x, this.position.y, 30);
+      circle(this.position.x, this.position.y, basic.repeller2Diameter);
     }
   
     repel(particle) {
