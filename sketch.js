@@ -7,7 +7,7 @@ let bgColor = 0;
 
 let basic = {
 
-  particleValue : 0,
+  particleValue : 1,
   particleValueMin : 0,
   particleValueMax : 10,
   particleValueStep : 1,
@@ -142,36 +142,33 @@ repeller_2.moveY(basic.repeller2MoveY);
   attractor_2.moveX(basic.attractor2MoveX);
   attractor_2.moveY(basic.attractor2MoveY);
 
+    let gravity = createVector(shape.gravityX, shape.gravityY);
 
-  if (mouseIsPressed) {
-    for (let i = 0; i < basic.particleValue; i++) {
-      let particleColor = basic.particleColor; 
-      emitter.addParticle(particleColor);
-    }
-    for (let i = 0; i < basic.particleValue; i++) {
-      let particleColor = basic.particleColor;
-      emitter_2.addParticle(particleColor);
-    }
+    emitter.applyForce(gravity);
+    emitter.applyRepeller(repeller);
+    emitter.applyAttractor(attractor);
+    emitter.run();
 
-  let gravity = createVector(shape.gravityX, shape.gravityY);
-
-  emitter.applyForce(gravity);
-  emitter.applyRepeller(repeller);
-  emitter.applyAttractor(attractor);
-  emitter.run();
-
-  emitter_2.applyForce(gravity);
-  emitter_2.applyRepeller(repeller_2);
-  emitter_2.applyAttractor(attractor_2);
-  emitter_2.run();
-
+    emitter_2.applyForce(gravity);
+    emitter_2.applyRepeller(repeller_2);
+    emitter_2.applyAttractor(attractor_2);
+    emitter_2.run();
+  
 
   repeller.show();
   repeller_2.show();
   attractor.show();
   attractor_2.show();
+
+  for (let i = 0; i < basic.particleValue; i++) {
+    let particleColor = basic.particleColor; 
+    emitter.addParticle(particleColor);
+  }
+  for (let i = 0; i < basic.particleValue; i++) {
+    let particleColor = basic.particleColor;
+    emitter_2.addParticle(particleColor);
+  }
 }
- }
 
 function mousePressed() {
   targetColor = 255;
