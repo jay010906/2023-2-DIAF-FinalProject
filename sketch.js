@@ -73,10 +73,10 @@ function setup() {
   gui2 = createGui('shape slider');
 
   gui.addObject(basic);
-  gui.setPosition(600, 10);
+  gui.setPosition(1000, 175);
 
   gui2.addObject(shape);
-  gui2.setPosition(820, 10);
+  gui2.setPosition(1000, 330);
 }
 
 function draw() {
