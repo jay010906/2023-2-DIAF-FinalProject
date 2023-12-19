@@ -1,37 +1,16 @@
 let gui;
 let gui2;
 
+let targetColor = 0; 
+let easing = 0.01; 
+let bgColor = 0;
+
 let basic = {
 
   particleValue : 0,
   particleValueMin : 0,
   particleValueMax : 10,
   particleValueStep : 1,
-
-  alphaValue : 0,
-  alphaValueMin : 0,
-  alphaValueMax : 255,
-  alphaValueStep : 1,
-
-  repeller1Diameter: 0,
-  repeller1DiameterMin : 0,
-  repeller1DiameterMax : 200,
-  repeller1DiameterStep : 1,
-
-  repeller2Diameter: 0,
-  repeller2DiameterMin : 0,
-  repeller2DiameterMax : 200,
-  repeller2DiameterStep : 1,
-
-  attractor1Diameter : 0,
-  attractor1DiameterMin : 0,
-  attractor1DiameterMax : 200,
-  attractor1DiameterStep : 1,
-
-  attractor2Diameter : 0,
-  attractor2DiameterMin : 0,
-  attractor2DiameterMax : 200,
-  attractor2DiameterStep : 1,
 
   repeller1MoveX: 0,
   repeller1MoveXMin : -1,
@@ -122,7 +101,7 @@ let attractor;
 let attractor_2;
 
 function setup() {
-  createCanvas(400, 400);
+  createCanvas(600, 600);
   emitter = new Emitter(width / 2, height/2);
   emitter_2 = new Emitter(width / 2, height/2);
   repeller = new Repeller(width / 2, height/2);
@@ -141,7 +120,9 @@ function setup() {
 }
 
 function draw() {
-  background(255);
+
+  bgColor += (targetColor - bgColor) * easing;
+  background(bgColor);
     
 repeller.setPower(shape.power);
 repeller.moveX(basic.repeller1MoveX);
@@ -162,13 +143,16 @@ repeller_2.moveY(basic.repeller2MoveY);
   attractor_2.moveY(basic.attractor2MoveY);
 
 
-  for (let i=0; i<basic.particleValue; i++) {
-    emitter.addParticle(basic.particleColor);  
-  }
-  for (let i=0; i<basic.particleValue; i++) {
-    emitter_2.addParticle(basic.particleColor);  
-  }
-  
+  if (mouseIsPressed) {
+    for (let i = 0; i < basic.particleValue; i++) {
+      let particleColor = basic.particleColor; 
+      emitter.addParticle(particleColor);
+    }
+    for (let i = 0; i < basic.particleValue; i++) {
+      let particleColor = basic.particleColor;
+      emitter_2.addParticle(particleColor);
+    }
+
   let gravity = createVector(shape.gravityX, shape.gravityY);
 
   emitter.applyForce(gravity);
@@ -186,4 +170,13 @@ repeller_2.moveY(basic.repeller2MoveY);
   repeller_2.show();
   attractor.show();
   attractor_2.show();
+}
+ }
+
+function mousePressed() {
+  targetColor = 255;
+}
+
+function mouseReleased() {
+  targetColor = 0;
 }
