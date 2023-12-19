@@ -9,8 +9,8 @@ let basic = {
 
   particleValue : 1,
   particleValueMin : 0,
-  particleValueMax : 10,
-  particleValueStep : 1,
+  particleValueMax : 15,
+  particleValueStep : 0.1,
 
   particleColor : [0, 0, 0],
 }
@@ -82,7 +82,7 @@ function setup() {
 function draw() {
 
   bgColor += (targetColor - bgColor) * easing;
-  background(bgColor, 10);
+  background(bgColor, 5);
     
 repeller.setPower(shape.power);
   repeller_2.setPower(shape.power);
