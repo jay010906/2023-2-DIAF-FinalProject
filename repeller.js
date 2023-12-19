@@ -23,7 +23,7 @@ class Repeller {
 
   show() {
     noStroke();
-    fill(0, 20);
+    fill(0, 0);
     circle(this.position.x, this.position.y, 30);
   }
 

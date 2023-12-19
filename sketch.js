@@ -2,7 +2,7 @@ let gui;
 let gui2;
 
 let targetColor = 0; 
-let easing = 0.01; 
+let easing = 0.05; 
 let bgColor = 0;
 
 let basic = {
@@ -73,16 +73,16 @@ function setup() {
   gui2 = createGui('shape slider');
 
   gui.addObject(basic);
-  gui.setPosition(420, 10);
+  gui.setPosition(600, 10);
 
   gui2.addObject(shape);
-  gui2.setPosition(630, 10);
+  gui2.setPosition(820, 10);
 }
 
 function draw() {
 
   bgColor += (targetColor - bgColor) * easing;
-  background(bgColor);
+  background(bgColor, 10);
     
 repeller.setPower(shape.power);
   repeller_2.setPower(shape.power);
