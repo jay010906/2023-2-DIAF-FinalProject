@@ -12,46 +12,6 @@ let basic = {
   particleValueMax : 10,
   particleValueStep : 1,
 
-  repeller1MoveX: 0,
-  repeller1MoveXMin : -1,
-  repeller1MoveXMax : 1,
-  repeller1MoveXStep : 0.05,
-
-  repeller1MoveY: 0,
-  repeller1MoveYMin : -1,
-  repeller1MoveYMax : 1,
-  repeller1MoveYStep : 0.05,
-
-  repeller2MoveX: 0,
-  repeller2MoveXMin : -1,
-  repeller2MoveXMax : 1,
-  repeller2MoveXStep : 0.05,
-
-  repeller2MoveY: 0,
-  repeller2MoveYMin : -1,
-  repeller2MoveYMax : 1,
-  repeller2MoveYStep : 0.05,
-
-  attractor1MoveX : 0,
-  attractor1MoveXMin : -1,
-  attractor1MoveXMax : 1,
-  attractor1MoveXStep : 0.05,
-
-  attractor1MoveY : 0,
-  attractor1MoveYMin : -1,
-  attractor1MoveYMax : 1,
-  attractor1MoveYStep : 0.05,
-
-  attractor2MoveX : 0,
-  attractor2MoveXMin : -1,
-  attractor2MoveXMax : 1,
-  attractor2MoveXStep : 0.05,
-
-  attractor2MoveY : 0,
-  attractor2MoveYMin : -1,
-  attractor2MoveYMax : 1,
-  attractor2MoveYStep : 0.05,
-
   particleColor : [0, 0, 0],
 }
 
@@ -107,7 +67,7 @@ function setup() {
   repeller = new Repeller(width / 2, height/2);
   repeller_2 = new Repeller_2(width / 2, height/2);
   attractor = new Attractor(width / 2, height/2);
-  attractor_2 = new Attractor(width / 2, height/2);
+  attractor_2 = new Attractor_2(width / 2, height/2);
   
   gui = createGui('basic slider');
   gui2 = createGui('shape slider');
@@ -125,22 +85,9 @@ function draw() {
   background(bgColor);
     
 repeller.setPower(shape.power);
-repeller.moveX(basic.repeller1MoveX);
-repeller.moveY(basic.repeller1MoveY);
-
   repeller_2.setPower(shape.power);
-  repeller_2.moveX(basic.repeller2MoveX);
-repeller_2.moveY(basic.repeller2MoveY);
-
-
   attractor.setPower(shape.power);
-  attractor.moveX(basic.attractor1MoveX);
-  attractor.moveY(basic.attractor1MoveY);
-
-
   attractor_2.setPower(shape.power);
-  attractor_2.moveX(basic.attractor2MoveX);
-  attractor_2.moveY(basic.attractor2MoveY);
 
     let gravity = createVector(shape.gravityX, shape.gravityY);
 
@@ -158,6 +105,7 @@ repeller_2.moveY(basic.repeller2MoveY);
   repeller.show();
   repeller_2.show();
   attractor.show();
+  attractor_2.move();
   attractor_2.show();
 
   for (let i = 0; i < basic.particleValue; i++) {
@@ -172,6 +120,7 @@ repeller_2.moveY(basic.repeller2MoveY);
 
 function mousePressed() {
   targetColor = 255;
+ attractor_2.position.set(random(width), random(height));
 }
 
 function mouseReleased() {

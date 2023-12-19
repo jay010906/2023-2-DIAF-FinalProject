@@ -1,18 +1,30 @@
 class Attractor_2 {
   constructor(x, y) {
-    this.position = createVector(x, y);
-    this.velocity = createVector(random(-1, 1), random(-1, 1));
+    this.position = createVector(100, 100);
+    this.velocity = createVector(2.5, 2);
     this.power = 300;
+    this.radius = 15;
   }
 
   setPower(value) {
     this.power = value;
   }
 
+  move() {
+    this.position.add(this.velocity);
+
+    if (this.position.x < this.radius || this.position.x > width - this.radius) {
+      this.velocity.x *= -1;
+    }
+    if (this.position.y < this.radius || this.position.y > height - this.radius) {
+      this.velocity.y *= -1;
+    }
+  }
+
   show() {
     noStroke();
     fill(0, 20);
-    circle(this.position.x, this.position.y, 320);
+    circle(this.position.x, this.position.y, 30);
   }
 
   pull(particle) {
