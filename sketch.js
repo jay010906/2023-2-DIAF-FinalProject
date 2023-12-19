@@ -101,9 +101,11 @@ repeller.setPower(shape.power);
     emitter_2.applyAttractor(attractor_2);
     emitter_2.run();
   
-
+  repeller.move();
   repeller.show();
+  repeller_2.move();
   repeller_2.show();
+  attractor.move();
   attractor.show();
   attractor_2.move();
   attractor_2.show();
@@ -120,7 +122,10 @@ repeller.setPower(shape.power);
 
 function mousePressed() {
   targetColor = 255;
+  attractor.position.set(random(width), random(height));
  attractor_2.position.set(random(width), random(height));
+ repeller.position.set(random(width), random(height));
+ repeller_2.position.set(random(width), random(height));
 }
 
 function mouseReleased() {
